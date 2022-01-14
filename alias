@@ -21,12 +21,12 @@ function extract () {
 }
 
 # bat
-if [ -x /opt/homebrew/bin/bat ]; then
+if [ -x $(brew --prefix)/bin/bat ]; then
   alias cat='bat'
 fi
 
 # ls or lsd
-if [ -x /opt/homebrew/bin/lsd ]; then
+if [ -x $(brew --prefix)/bin/lsd ]; then
   alias ls='lsd'
   alias l='lsd -lh'
   alias ll='lsd -lah'
