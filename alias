@@ -1,0 +1,61 @@
+#!/bin/bash
+
+function extract () {
+  if [ -f $1 ] ; then
+    case $1 in
+      *.tar.bz2) tar xjf $1 ;;
+      *.tar.gz) tar xzf $1 ;;
+      *.bz2) bunzip2 $1 ;;
+      *.rar) rar x $1 ;;
+      *.gz) gunzip $1 ;;
+      *.tar) tar xf $1 ;;
+      *.tbz2) tar xjf $1 ;;
+      *.tgz) tar xzf $1 ;;
+      *.zip) unzip $1 ;;
+      *.Z) uncompress $1 ;;
+      *) echo "'$1' cannot be extracted via extract()" ;;
+    esac
+  else
+    echo "'$1' is not a valid file"
+  fi
+}
+
+# bat
+if [ -x /opt/homebrew/bin/bat ]; then
+  alias cat='bat'
+fi
+
+# ls or lsd
+if [ -x /opt/homebrew/bin/lsd ]; then
+  alias ls='lsd'
+  alias l='lsd -lh'
+  alias ll='lsd -lah'
+  alias la='lsd -Ah'
+  alias lt='lsd --tree'
+else
+  alias ls='ls --sort=extension --color=auto'
+  alias l='ls -lh'
+  alias ll='ls -lah'
+  alias la='ls -A'
+  alias lt='ls --tree'
+fi
+
+# cd - show content after cd
+cd() { builtin cd "$@"; ls -lah; }
+alias ..='cd ..'
+
+# clear + motd
+alias cls='source ~/.zshrc'
+alias rl='source ~/.zshrc'
+alias reload='source ~/.zshrc'
+
+# dotfiles update
+alias update-dotfiles='cd ~/dotfiles && git pull && rl'
+alias dotfu='dotf && gp && rl'
+
+# fast switch to dotfiles
+alias dotf='cd ~/dotfiles && git status'
+
+# fix typo mistakes
+alias cd.='cd ..'
+alias cd..='cd ..'
