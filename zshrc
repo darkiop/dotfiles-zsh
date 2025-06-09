@@ -1,3 +1,7 @@
+# https://github.com/ohmyzsh
+# https://github.com/romkatv/powerlevel10k
+# git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
+
 # OH-MY-ZSH
 if [ -d $HOME/.oh-my-zsh ]; then
     export ZSH="$HOME/.oh-my-zsh"
@@ -9,11 +13,7 @@ if [ -f $(brew --prefix)/share/antigen/antigen.zsh ]; then
 fi
 
 # THEME
-if [ -d $ZSH_CUSTOM/themes/spaceship-prompt ]; then
-    ZSH_THEME="spaceship"
-else 
-    ZSH_THEME="bira"
-fi
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # SPACESHIP OPTIONS
 SPACESHIP_TIME_SHOW="true"
